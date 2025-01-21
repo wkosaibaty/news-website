@@ -23,7 +23,9 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
         <Typography variant="h4">{title}</Typography>
       </Box>
       {actionText && onActionClick && (
-        <Button onClick={onActionClick}>All Articles</Button>
+        <Button color="info" onClick={onActionClick}>
+          All Articles
+        </Button>
       )}
     </Box>
   );

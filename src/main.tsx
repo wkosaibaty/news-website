@@ -10,24 +10,33 @@ import ArticlePage from "./pages/article.page.tsx";
 import ArticlesPage from "./pages/articles.page.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AppLayout from "./pages/layouts/app.layout.tsx";
+import SettingsPage from "./pages/settings.page.tsx";
 import { AuthProvider } from "./providers/auth.provider.tsx";
+import { SnackbarProvider } from "notistack";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={new QueryClient()}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AuthProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<AppLayout />}>
-                <Route index element={<HomePage />} />
-                <Route path="articles" element={<ArticlesPage />} />
-                <Route path="articles/:id" element={<ArticlePage />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </AuthProvider>
+        <SnackbarProvider
+          maxSnack={1}
+          preventDuplicate
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        >
+          <AuthProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<AppLayout />}>
+                  <Route index element={<HomePage />} />
+                  <Route path="articles" element={<ArticlesPage />} />
+                  <Route path="articles/:id" element={<ArticlePage />} />
+                  <Route path="settings" element={<SettingsPage />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </AuthProvider>
+        </SnackbarProvider>
       </ThemeProvider>
     </QueryClientProvider>
   </StrictMode>

@@ -28,10 +28,14 @@ const Header: React.FC = () => {
         </Typography>
         {user ? (
           <Box display="flex" alignItems="center">
-            <Avatar sx={{ width: "38px", height: "38px", mr: "12px" }}>
+            <Avatar
+              sx={{ width: "38px", height: "38px", mr: { xs: 0, md: "12px" } }}
+            >
               {user.name[0]}
             </Avatar>
-            <Typography variant="h5">{user.name}</Typography>
+            <Typography variant="h5" display={{ xs: "none", md: "block" }}>
+              {user.name}
+            </Typography>
             <SettingsMenu />
           </Box>
         ) : (
