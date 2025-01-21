@@ -17,14 +17,14 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       <Box display="flex" gap="6px" alignItems="center">
         <Box
           width="4px"
-          height="10px"
+          height="18px"
           sx={{ backgroundColor: "primary.main", borderRadius: "12px" }}
         ></Box>
-        <Typography variant="h4">{title}</Typography>
+        <Typography variant="h3">{title}</Typography>
       </Box>
       {actionText && onActionClick && (
-        <Button color="info" onClick={onActionClick}>
-          All Articles
+        <Button variant="outlined" color="info" onClick={onActionClick}>
+          {actionText}
         </Button>
       )}
     </Box>

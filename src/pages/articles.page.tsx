@@ -70,22 +70,26 @@ const ArticlesPage: React.FC = () => {
 
   return (
     <Box display="flex" flexDirection="column">
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <SectionTitle title="Articles" />
-        <Box display="flex" gap="8px" alignItems="center">
+      <SectionTitle title="Articles" />
+      <Grid2 container alignItems="center" spacing={2} my="16px">
+        <Grid2 size={{ xs: 12, md: 3 }}>
           <TextField
             label="Search"
             size="small"
+            fullWidth
+            sx={{ minWidth: "200px" }}
             onChange={(e) => setSearch(e.target.value)}
           />
-
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 4 }}>
+          <FormControl sx={{ minWidth: 120, width: "100%" }} size="small">
             <InputLabel id="category-select-label">Category</InputLabel>
             <Select
               labelId="category-select-label"
               id="category-select"
               value={categoryId}
               label="Cateory"
+              fullWidth
               onChange={(e) => {
                 const value = e.target.value;
                 if (!value) {
@@ -106,14 +110,16 @@ const ArticlesPage: React.FC = () => {
               ))}
             </Select>
           </FormControl>
-
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 4 }}>
+          <FormControl sx={{ minWidth: 120, width: "100%" }} size="small">
             <InputLabel id="source-select-label">Source</InputLabel>
             <Select
               labelId="source-select-label"
               id="source-select"
               value={sourceId}
               label="Source"
+              fullWidth
               onChange={(e) => {
                 const value = e.target.value;
                 if (!value) {
@@ -134,13 +140,14 @@ const ArticlesPage: React.FC = () => {
               ))}
             </Select>
           </FormControl>
-
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 1 }}>
           <DateRangePicker
             onSave={(range) => setDateRange(range)}
             defaultValue={dateRange}
           />
-        </Box>
-      </Box>
+        </Grid2>
+      </Grid2>
 
       {isError && articles.length == 0 && <ErrorComponent />}
       {!isError && !isLoading && articles.length == 0 && (

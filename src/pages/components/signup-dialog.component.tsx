@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { useSignup } from "../hooks/use-signup.hook";
@@ -23,7 +24,7 @@ const SignupDialog: React.FC<SignupDialogProps> = ({ open, setOpen }) => {
     <Dialog
       open={open}
       onClose={() => setOpen(false)}
-      maxWidth="sm"
+      maxWidth="xs"
       fullWidth={true}
       PaperProps={{
         component: "form",
@@ -37,9 +38,11 @@ const SignupDialog: React.FC<SignupDialogProps> = ({ open, setOpen }) => {
         },
       }}
     >
-      <DialogTitle>Signup</DialogTitle>
+      <DialogTitle>
+        <Typography variant="h4">Signup</Typography>
+      </DialogTitle>
       <DialogContent>
-        <Box display="flex" flexDirection="column" gap="15px">
+        <Box display="flex" flexDirection="column" gap="15px" my="20px">
           <TextField
             autoFocus
             required
@@ -51,7 +54,6 @@ const SignupDialog: React.FC<SignupDialogProps> = ({ open, setOpen }) => {
             variant="outlined"
           />
           <TextField
-            autoFocus
             required
             id="email"
             name="email"
@@ -61,7 +63,6 @@ const SignupDialog: React.FC<SignupDialogProps> = ({ open, setOpen }) => {
             variant="outlined"
           />
           <TextField
-            autoFocus
             required
             id="password"
             name="password"

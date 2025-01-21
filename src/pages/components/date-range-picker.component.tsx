@@ -75,6 +75,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
               slotProps={{
                 textField: {
                   label: "",
+                  size: "small",
                   placeholder: "Start date",
                 },
               }}
@@ -86,6 +87,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
               slotProps={{
                 textField: {
                   label: "",
+                  size: "small",
                   placeholder: "End date",
                 },
               }}

@@ -5,16 +5,21 @@ import SectionTitle from "./components/section-title.component";
 import ArticleCardSkeletonList from "./components/article-card-skeleton-list.component";
 import { useFeed } from "./hooks/use-feed.hook";
 import { useNavigate } from "react-router";
+import ErrorComponent from "./components/error.component";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const { data: articles, isLoading } = useFeed();
+  const { data: articles, isLoading, isError } = useFeed();
+
+  if (isError) {
+    return <ErrorComponent />;
+  }
 
   return (
     <Box display="flex" flexDirection="column">
       <SectionTitle
-        title="Feed"
-        actionText="Show all"
+        title="News Feed"
+        actionText="All articles"
         onActionClick={() => navigate("/articles")}
       />
       <Box
@@ -23,6 +28,7 @@ const HomePage: React.FC = () => {
           overflowX: "hidden",
           overflowY: "auto",
           py: "30px",
+          mt: "16px",
         }}
       >
         <Grid2 container spacing={2}>

@@ -24,7 +24,7 @@ const Header: React.FC = () => {
           onClick={() => navigate("/")}
           sx={{ cursor: "pointer" }}
         >
-          NEWS APP
+          Breaking News
         </Typography>
         {user ? (
           <Box display="flex" alignItems="center">
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
             </Button>
 
             <Button
-              variant="outlined"
+              variant="contained"
               color="primary"
               onClick={() => setSignupDialogOpen(true)}
             >

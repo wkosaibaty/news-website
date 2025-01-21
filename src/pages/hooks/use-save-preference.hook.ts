@@ -11,7 +11,7 @@ export const useSavePreference = () => {
       enqueueSnackbar("Success", { variant: "success" });
     },
     onError: (error: any) => {
-      enqueueSnackbar(error?.message || "Invalid username or password", {
+      enqueueSnackbar(error?.message || "Something went wrong", {
         variant: "error",
       });
     },

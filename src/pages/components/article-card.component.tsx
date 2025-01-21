@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { Article } from "../../core/models/article.model";
 import { useNavigate } from "react-router";
+import ImageIcon from "@mui/icons-material/Image";
 
 interface ArticleCardProps {
   article: Article;
@@ -33,8 +34,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
           <Box
             width="100%"
             height="190px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
             sx={{ backgroundColor: "#F5F5F5", borderRadius: "12px" }}
-          ></Box>
+          >
+            <ImageIcon sx={{ fontSize: 80, color: "grey" }} />
+          </Box>
         )}
         <CardContent>
           <Box display="flex" flexDirection="column" gap="16px" mt="16px">

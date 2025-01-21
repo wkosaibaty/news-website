@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { LoginRequest } from "../../core/models/login-request.model";
@@ -23,7 +24,7 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ open, setOpen }) => {
     <Dialog
       open={open}
       onClose={() => setOpen(false)}
-      maxWidth="sm"
+      maxWidth="xs"
       fullWidth={true}
       PaperProps={{
         component: "form",
@@ -37,9 +38,11 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ open, setOpen }) => {
         },
       }}
     >
-      <DialogTitle>Login</DialogTitle>
+      <DialogTitle>
+        <Typography variant="h4">Login</Typography>
+      </DialogTitle>
       <DialogContent>
-        <Box display="flex" flexDirection="column" gap="15px">
+        <Box display="flex" flexDirection="column" gap="15px" my="20px">
           <TextField
             autoFocus
             required
@@ -51,7 +54,6 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ open, setOpen }) => {
             variant="outlined"
           />
           <TextField
-            autoFocus
             required
             id="password"
             name="password"
