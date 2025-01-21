@@ -1,8 +1,13 @@
 import React, { useMemo } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { IconButton, Menu, MenuItem } from "@mui/material";
+import { useNavigate } from "react-router";
+import { useAuth } from "../../providers/auth.provider";
 
 const SettingsMenu: React.FC = () => {
+  const navigate = useNavigate();
+  const { removeToken } = useAuth();
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -18,11 +23,13 @@ const SettingsMenu: React.FC = () => {
         title: "Preferences",
         onClick: () => {
           handleClose();
+          navigate("/settings");
         },
       },
       {
         title: "Logout",
         onClick: () => {
+          removeToken();
           handleClose();
         },
       },

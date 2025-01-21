@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { feedService } from "../../core/services/feed.service";
+import { userService } from "../../core/services/user.service";
 import { useAuth } from "../../providers/auth.provider";
 
-export const useFeed = () => {
+export const useUser = () => {
   const { isAuthenticated } = useAuth();
 
   return useQuery({
-    queryKey: ["feed", isAuthenticated],
-    queryFn: () => feedService.getFeed(),
+    queryKey: ["user"],
+    queryFn: () => userService.getUser(),
     select: (response) => response.data,
+    enabled: isAuthenticated,
   });
 };

@@ -46,7 +46,7 @@ export default class BaseService {
   }
 
   private async request<T>(endpoint: string, options: RequestInit): Promise<T> {
-    const token = Cookies.get("token");
+    const token = Cookies.get("access_token");
 
     const headers: Record<string, any> = {
       Accept: "application/json",
@@ -72,7 +72,7 @@ export default class BaseService {
     const responseError = await response.json();
     switch (response.status) {
       case 401: {
-        Cookies.remove("token");
+        Cookies.remove("access_token");
         window.location.href = "/";
         break;
       }
