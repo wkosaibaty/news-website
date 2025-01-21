@@ -8,16 +8,21 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Article } from "../../core/models/article.model";
+import { useNavigate } from "react-router";
 
 interface ArticleCardProps {
   article: Article;
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ article, onClick }) => {
+const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
+  const navigate = useNavigate();
+
   return (
     <Card>
-      <CardActionArea sx={{ p: "10px" }} onClick={onClick}>
+      <CardActionArea
+        sx={{ p: "10px" }}
+        onClick={() => navigate(`/articles/${article.id}`)}
+      >
         {article.image_url ? (
           <CardMedia
             component="img"

@@ -6,6 +6,7 @@ import { CssBaseline } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router";
 import HomePage from "./pages/home.page.tsx";
 import "./index.css";
+import ArticlePage from "./pages/article.page.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AppLayout from "./pages/layouts/app.layout.tsx";
 import { AuthProvider } from "./providers/auth.provider.tsx";
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")!).render(
             <Routes>
               <Route path="/" element={<AppLayout />}>
                 <Route index element={<HomePage />} />
+                <Route path="articles/:id" element={<ArticlePage />} />
               </Route>
             </Routes>
           </BrowserRouter>

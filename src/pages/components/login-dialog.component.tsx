@@ -8,16 +8,16 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
-import { useSignup } from "../hooks/use-signup.hook";
-import { SignupRequest } from "../../core/models/signup-request.model";
+import { LoginRequest } from "../../core/models/login-request.model";
+import { useLogin } from "../hooks/use-login.hook";
 
-interface SignupDialogProps {
+interface LoginDialogProps {
   open: boolean;
   setOpen: (value: boolean) => void;
 }
 
-const SignupDialog: React.FC<SignupDialogProps> = ({ open, setOpen }) => {
-  const { mutate: signup, isPending } = useSignup(() => setOpen(false));
+const LoginDialog: React.FC<LoginDialogProps> = ({ open, setOpen }) => {
+  const { mutate: login, isPending } = useLogin(() => setOpen(false));
 
   return (
     <Dialog
@@ -32,24 +32,14 @@ const SignupDialog: React.FC<SignupDialogProps> = ({ open, setOpen }) => {
           const formData = new FormData(event.currentTarget);
           const request = Object.fromEntries(
             (formData as any).entries()
-          ) as SignupRequest;
-          signup(request);
+          ) as LoginRequest;
+          login(request);
         },
       }}
     >
-      <DialogTitle>Signup</DialogTitle>
+      <DialogTitle>Login</DialogTitle>
       <DialogContent>
         <Box display="flex" flexDirection="column" gap="15px">
-          <TextField
-            autoFocus
-            required
-            id="name"
-            name="name"
-            label="Name"
-            type="text"
-            fullWidth
-            variant="outlined"
-          />
           <TextField
             autoFocus
             required
@@ -81,11 +71,11 @@ const SignupDialog: React.FC<SignupDialogProps> = ({ open, setOpen }) => {
           Cancel
         </Button>
         <Button type="submit" disabled={isPending}>
-          Signup
+          Login
         </Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-export default SignupDialog;
+export default LoginDialog;

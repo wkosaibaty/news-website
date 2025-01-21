@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
           <Grid2 container spacing={2}>
             {articles?.records.map((article) => (
               <Grid2 key={article.id} size={{ xs: 12, md: 3 }}>
-                <ArticleCard article={article} onClick={() => {}} />
+                <ArticleCard article={article} />
               </Grid2>
             ))}
           </Grid2>

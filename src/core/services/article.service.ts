@@ -25,7 +25,7 @@ class ArticleService extends BaseService {
     return this.get(this.endpoint, filters);
   };
 
-  public getArticle = (id: string): Promise<ApiResponse<Article>> => {
+  public getArticle = (id: number): Promise<ApiResponse<Article>> => {
     return this.get(`${this.endpoint}/${id}`);
   };
 }

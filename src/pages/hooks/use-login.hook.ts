@@ -3,9 +3,11 @@ import { authService } from "../../core/services/auth.service";
 import { ApiResponse } from "../../core/models/api-response.model";
 import { AuthResponse } from "../../core/models/auth-response.model";
 import { useAuth } from "../../providers/auth.provider";
+import { useSnackbar } from "notistack";
 
 export const useLogin = (onSuccess: () => void) => {
   const { setToken } = useAuth();
+  const { enqueueSnackbar } = useSnackbar();
 
   return useMutation({
     mutationFn: authService.login,
@@ -16,7 +18,9 @@ export const useLogin = (onSuccess: () => void) => {
       }
     },
     onError: (error: any) => {
-      console.error("Error login", error);
+      enqueueSnackbar(error?.message || "Invalid username or password", {
+        variant: "error",
+      });
     },
   });
 };

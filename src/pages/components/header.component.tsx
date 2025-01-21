@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import SettingsMenu from "./settings-menu.component";
 import LoginDialog from "./login-dialog.component";
 import SignupDialog from "./signup-dialog.component";
-import { useUser } from "../hooks/use-user";
+import { useUser } from "../hooks/use-user.hook";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
