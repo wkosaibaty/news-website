@@ -1,7 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-const ErrorComponent: React.FC = () => {
+interface ErrorComponentProps {
+  message?: string;
+}
+
+const ErrorComponent: React.FC<ErrorComponentProps> = ({ message }) => {
   return (
     <Box
       display="flex"
@@ -10,7 +14,7 @@ const ErrorComponent: React.FC = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Typography variant="h3">Something went wrong</Typography>
+      <Typography variant="h3">{message ?? "Something went wrong"}</Typography>
     </Box>
   );
 };
